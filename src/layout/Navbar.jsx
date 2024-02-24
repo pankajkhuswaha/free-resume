@@ -8,7 +8,7 @@ const Navbar = () => {
     content: () => componentRef.current,
   });
   return (
-    <div className="border-b shadow-xl bg-gray-100 w-full sticky top-0">
+    <div className="border-b shadow-md bg-gray-100 w-full sticky top-0">
       <div className="container mx-auto p-3 flex justify-between items-center">
         <h1>Resume</h1>
         <button onClick={handlePrint} className="btn">

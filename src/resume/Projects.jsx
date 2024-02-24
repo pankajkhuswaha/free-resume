@@ -1,10 +1,10 @@
-import React from "react";
-import SectionWrapper from "./Sections";
-import resumeDetails from "./data";
 import { ExternalLink } from "lucide-react";
+import React from "react";
+import productStore from "../features/productStore";
+import SectionWrapper from "./Sections";
 
 const Projects = () => {
-  const { projects } = resumeDetails;
+  const { projects } = productStore();
   return (
     <SectionWrapper title={"Projects"}>
       {projects.map((project, index) => {

@@ -1,18 +1,20 @@
-import { useForm } from "react-hook-form";
-import { experienceSchema } from "../../schemas/experience";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { months } from "../../constants";
-import MonthYearInput from "../MonthYearInput";
-import { useRef } from "react";
-import { PlusCircleIcon } from "lucide-react";
-import resumeDetails from "../../resume/data";
-import useResume from "../../features/useResume";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import ActionButtons from "../../components/ActionButtons";
+import AddBar from "../../components/AddBar";
+import FormLayout from "../../components/FormLayout";
+import MonthYearInput from "../../components/MonthYearInput";
+import Experience from "../../components/sections/Experience";
+import useExperiences from "../../features/useExperiences";
+import { experienceSchema } from "../../schemas/experience";
+
 const AddExperience = () => {
-  const experiences = resumeDetails.experiences;
   const {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = useForm({ resolver: zodResolver(experienceSchema) });
   const textInputs = [
@@ -29,17 +31,47 @@ const AddExperience = () => {
       placeholder: "Enter your company location",
     },
   ];
-  const formRef = useRef(null);
-  const { addExperience } = useResume();
+  const { addExperience, experiences, deleteExperience, editExperience } =
+    useExperiences();
+  const [showForm, setShowForm] = useState(
+    experiences.length === 0 ? true : false
+  );
+  const [selectedDescription, setSelectedDescription] = useState("");
 
   return (
-    <div className="border rounded p-3">
-      <h1 className="text-gray-600 mb-4">Experience summary</h1>
+    <FormLayout
+      title={"Experience"}
+      prev={"/app/contact-details"}
+      next={"/app/projects"}
+      length={experiences.length}
+      open={showForm}
+      onSubmit={handleSubmit((data) => {
+        selectedDescription !== "" ? editExperience(data) : addExperience(data);
+        reset();
+        setShowForm(false);
+      })}
+    >
+      {experiences.map((experience, i) => {
+        const description = experience?.description.join(" & ");
+        return (
+          <div key={i} className="w-full relative">
+            <Experience experience={experience} />
+            <ActionButtons
+              onEditBtnClick={() => {
+                setShowForm(true);
+                setSelectedDescription(description);
+                reset(experience);
+              }}
+              onDelteBtnClick={() => {
+                deleteExperience(experience.company);
+              }}
+            />
+          </div>
+        );
+      })}
 
-      <p>{JSON.stringify(experiences)}</p>
-
-      {experiences.length > 0 && (
-        <form ref={formRef} className="w-full space-y-4 mt-4">
+      {showForm && (
+        <form className="w-full space-y-4 mt-4">
           <div className="md:flex md:gap-4 max-md:space-y-4">
             {textInputs.map((input, i) => (
               <div key={i} className="w-full md:w-1/3">
@@ -72,6 +104,7 @@ const AddExperience = () => {
               rows={5}
               className={`form-input w-full ${errors["description"]?.message && "error"}`}
               placeholder="Enter your job description"
+              defaultValue={selectedDescription}
               onChange={(e) =>
                 setValue("description", e.target.value.split("&"))
               }
@@ -82,31 +115,10 @@ const AddExperience = () => {
           </div>
         </form>
       )}
-      {experiences.length === 0 && (
-        <div className="border-2 border-primary border-dotted p-3 rounded-xl flex items-center gap-4 justify-center cursor-pointer my-10">
-          <PlusCircleIcon color="var(--primary-color)" size={30} />
-          <h2>Add Experience</h2>
-        </div>
+      {!showForm && (
+        <AddBar title={"Experience"} onClick={() => setShowForm(true)} />
       )}
-      <div className="flex justify-between mt-2">
-        <p className="btn lg gray w-1/3 text-center">Back</p>
-        <button
-          onClick={() => {
-            if (experiences.length === 0) {
-              alert("Please add experience");
-              return;
-            } else {
-              handleSubmit((val) => {
-                addExperience(val);
-              })();
-            }
-          }}
-          className="btn lg w-1/3"
-        >
-          Continue
-        </button>
-      </div>
-    </div>
+    </FormLayout>
   );
 };
 

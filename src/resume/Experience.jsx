@@ -1,11 +1,10 @@
 import { MapPin } from "lucide-react";
 import React from "react";
+import useExperiences from "../features/useExperiences";
 import SectionWrapper from "./Sections";
-import resumeDetails from "./data";
-import useResume from "../features/useResume";
 
 const Experience = () => {
-  const { experiences } = useResume();
+  const { experiences } = useExperiences();
   return (
     <SectionWrapper title={"Experience"}>
       {experiences.map((experience, i) => {
