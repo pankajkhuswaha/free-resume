@@ -4,7 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@media print, screen and (min-width: 210mm) {
+:root {
+  --primary-color: #0081cf;
+}
 
 * {
   margin: 0;
@@ -23,7 +25,7 @@ h1,
 }
 h2,
 .h2 {
-  @apply text-lg font-bold;
+  @apply text-lg font-bold text-primary;
 }
 p {
   @apply text-gray-600 text-sm;
@@ -32,17 +34,19 @@ p {
 ul {
   @apply list-disc ml-6 mt-2;
 }
-li{
+li {
   @apply text-sm;
 }
 .mini-card {
   @apply border cursor-pointer rounded bg-gray-200 flex flex-wrap items-center justify-center w-fit p-1 px-2 gap-2;
 }
-
-@layer utilities {
-  .input {
-    @apply bg-gray-50 border-2 border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white;
-  }
+.btn {
+  @apply border-2 rounded border-primary hover:bg-primary hover:text-white transition-all duration-300 px-3 py-1;
 }
 
+.form-input {
+  @apply bg-gray-50 px-4 py-2 outline-none border-2 rounded focus:border-primary;
+}
+.form-input.error{
+  @apply border-red-500
 }
