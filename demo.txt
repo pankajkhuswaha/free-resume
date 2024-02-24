@@ -1,9 +1,0 @@
-export const getProducts = createAsyncThunk("product", async () => {
-  const res = await axios.get(`${base_url}product`);
-  return res.data;
-});
-
-builder
-      .addCase(AllFilterApi.pending, (state) => {
-        state.loading = true;
-      })
