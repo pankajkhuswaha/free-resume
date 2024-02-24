@@ -41,12 +41,19 @@ li {
   @apply border cursor-pointer rounded bg-gray-200 flex flex-wrap items-center justify-center w-fit p-1 px-2 gap-2;
 }
 .btn {
-  @apply border-2 rounded border-primary hover:bg-primary hover:text-white transition-all duration-300 px-3 py-1;
+  @apply border-2 rounded cursor-pointer border-primary hover:bg-primary hover:text-white transition-all duration-300 px-3 py-1;
+}
+
+.btn.lg {
+  @apply p-2 text-xl font-semibold text-gray-700 hover:text-white;
+}
+.gray{
+  @apply border-gray-900 hover:bg-gray-900
 }
 
 .form-input {
   @apply bg-gray-50 px-4 py-2 outline-none border-2 rounded focus:border-primary;
 }
-.form-input.error{
-  @apply border-red-500
+.form-input.error {
+  @apply border-red-500;
 }
