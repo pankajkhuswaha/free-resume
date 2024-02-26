@@ -36,14 +36,14 @@ const Sidebar = () => {
     {
       icon: "icon6",
       color: "color6",
-      path: "/education",
-      name: "Education",
+      path: "/educations",
+      name: "Educations",
     },
     {
       icon: "icon7",
       color: "color7",
-      path: "/strength",
-      name: "Strength",
+      path: "/strengths",
+      name: "Strengths",
     },
     {
       icon: "icon8",

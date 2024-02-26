@@ -12,7 +12,7 @@ const FormLayout = ({
 }) => {
   return (
     <div className="border rounded-xl shadow-lg p-3">
-      <h1 className="text-gray-600 mb-4">{title} summary</h1>
+      <h1 className="text-gray-600 mb-4">{title}</h1>
 
       {children}
 
@@ -33,7 +33,7 @@ const FormLayout = ({
                 onSubmit && onSubmit();
               }}
             >
-              Continue
+              Save
             </button>
           )}
         </div>

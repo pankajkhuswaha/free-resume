@@ -6,7 +6,6 @@ export const projectSchema = z.object({
     .string()
     .url("Please enter a valid url")
     .min(1, "Project link is required."),
-  location: z.string().min(1, "Location is required."),
   startDate: z.string().min(1, "Start Date is required."),
   endDate: z.string().min(1, "End Date is required."),
   techStack: z.array(

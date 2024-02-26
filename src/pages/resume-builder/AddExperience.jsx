@@ -40,7 +40,7 @@ const AddExperience = () => {
 
   return (
     <FormLayout
-      title={"Experience"}
+      title={"Experience summary"}
       prev={"/app/contact-details"}
       next={"/app/projects"}
       length={experiences.length}

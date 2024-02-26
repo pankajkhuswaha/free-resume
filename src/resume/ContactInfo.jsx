@@ -1,13 +1,17 @@
-import React from "react";
-import resumeDetails from "./data";
+import contactStore from "../features/contactInfoStore";
 
 const ContactDetails = () => {
-  const { contactDetails } = resumeDetails;
+  const { contactDetails } = contactStore();
+  console.log(contactDetails.linkedin);
   return (
     <div className="address-container mt-2 flex gap-2 flex-wrap">
       {Object.entries(contactDetails).map(([key, value]) => {
         return (
-          <div key={key} onClick={()=>window.open(value.link)} className="mini-card">
+          <div
+            key={key}
+            onClick={() => window.open(value.link)}
+            className="mini-card"
+          >
             <span className="svg-icon text-sm text-gray-600 size-8 bg-gray-100 rounded-full flex items-center justify-center ">
               {value.icon}
             </span>

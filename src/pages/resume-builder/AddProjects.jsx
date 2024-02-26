@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import ActionButtons from "../../components/ActionButtons";
 import AddBar from "../../components/AddBar";
@@ -8,6 +8,7 @@ import MonthYearInput from "../../components/MonthYearInput";
 import { projectSchema } from "../../schemas/project";
 import Project from "../../components/sections/Project";
 import productStore from "../../features/productStore";
+import { Trash2 } from "lucide-react";
 
 const AddProject = () => {
   const {
@@ -15,8 +16,12 @@ const AddProject = () => {
     handleSubmit,
     setValue,
     reset,
+    watch,
     formState: { errors },
-  } = useForm({ resolver: zodResolver(projectSchema) });
+  } = useForm({
+    resolver: zodResolver(projectSchema),
+    defaultValues: { techStack: [] },
+  });
   const textInputs = [
     {
       name: "title",
@@ -32,12 +37,13 @@ const AddProject = () => {
     projects.length === 0 ? true : false
   );
   const [selectedDescription, setSelectedDescription] = useState("");
+  const skillInputRef = useRef(null);
 
   return (
     <FormLayout
-      title={"Project"}
+      title={"Project summary"}
       prev={"/app/contact-details"}
-      next={"/app/projects"}
+      next={"/app/skills"}
       length={projects.length}
       open={showForm}
       onSubmit={handleSubmit((data) => {
@@ -111,10 +117,42 @@ const AddProject = () => {
           <div className="w-full flex gap-4">
             <input
               type="text"
+              ref={skillInputRef}
               className="form-input w-full"
               placeholder="Enter your project tech stack"
             />
-            <button className="btn whitespace-nowrap">Add Tools</button>
+            <p
+              onClick={() => {
+                setValue("techStack", [
+                  ...watch("techStack"),
+                  skillInputRef.current.value,
+                ]);
+                skillInputRef.current.value = "";
+              }}
+              className="btn whitespace-nowrap"
+            >
+              Add Tools
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {watch("techStack").map((tech, i) => (
+              <div
+                key={i}
+                className="w-[48%] flex items-center justify-between"
+              >
+                {tech}
+                <Trash2
+                  color="red"
+                  onClick={() => {
+                    const updatedTools = [...watch("techStack")];
+                    updatedTools.splice(i, 1);
+                    setValue("techStack", updatedTools);
+                  }}
+                  className=" cursor-pointer"
+                />
+              </div>
+            ))}
+            <div className="w-[48%]"></div>
           </div>
         </form>
       )}

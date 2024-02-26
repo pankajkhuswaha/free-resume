@@ -1,8 +1,8 @@
+import InfoStore from "../features/infoStore";
 import SectionWrapper from "./Sections";
-import resumeDetails from "./data";
 
 const Summary = () => {
-  const { summary } = resumeDetails;
+  const { summary } = InfoStore();
   return (
     <SectionWrapper title={"Professional Summary"}>
       <p>{summary}</p>

@@ -12,7 +12,7 @@ const resumeDetails = {
       icon: <Airplay size={15} />,
     },
     mobile: {
-      label: "+91 9315448505",
+      label: `+91 9315448505`,
       link: "tel:9315448505",
       icon: <Phone size={15} />,
     },

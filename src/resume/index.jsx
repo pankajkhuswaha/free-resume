@@ -1,15 +1,15 @@
 import React, { forwardRef } from "react";
-import resumeDetails from "./data";
+import InfoStore from "../features/infoStore";
 import ContactDetails from "./ContactInfo";
-import Summary from "./Summary";
+import Educations from "./Educations";
 import Experience from "./Experience";
 import Projects from "./Projects";
 import Skills from "./Skills";
-import Educations from "./Educations";
 import Strengths from "./Strengths";
+import Summary from "./Summary";
 
 const Resume = forwardRef((props, ref) => {
-  const { info } = resumeDetails;
+  const { info } = InfoStore();
   return (
     <div ref={ref} className="p-4 ">
       <div className="intro">
