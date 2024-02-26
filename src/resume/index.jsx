@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import InfoStore from "../features/infoStore";
 import ContactDetails from "./ContactInfo";
 import Educations from "./Educations";
@@ -8,32 +8,51 @@ import Skills from "./Skills";
 import Strengths from "./Strengths";
 import Summary from "./Summary";
 
-const Resume = forwardRef((props, ref) => {
+const Resume = (props, ref) => {
   const { info } = InfoStore();
-  const resumeData = {
-    contact: <ContactDetails />,
-    experience: <Experience />,
-    projects: <Projects />,
-    skills: <Skills />,
-    strengths: <Strengths />,
-    summary: <Summary />,
-    educations: <Educations />,
-  };
+  const resumeData = [
+    <ContactDetails />,
+    <Experience />,
+    <Projects />,
+    <Skills />,
+    <Educations />,
+    <Strengths />,
+    <Summary />,
+  ];
+  const [resumeFormat, setResumeFormat] = useState(resumeData);
+
   const [isDraggging, setIsDraggging] = useState(false);
+  const [source, setSource] = useState();
+  const [target, setTarget] = useState();
+  useEffect(() => {
+    const temp = resumeData[source];
+    resumeData[source] = resumeData[target];
+    resumeData[target] = temp;
+    console.log(resumeData)
+    setResumeFormat(resumeData);
+  }, [source]);
+
   return (
-    <div ref={ref} className="p-4 ">
+    <div className="p-4 ">
       <div className="intro">
         <h1>{info.name}</h1>
         <p className=" text-xl text-gray-500">{info.jobRole}</p>
       </div>
-      {Object.entries(resumeData).map(([key, value]) => {
+      {resumeData.map((ele, i) => {
         return (
           <div
             draggable
-            className={isDraggging && "border cursor-grabbing"}
-            key={key}
+            onDragStart={() => setIsDraggging(true)}
+            onDragOver={() => setSource(i)}
+            onDragEnd={() => setTarget(i)}
+            className={
+              isDraggging && i === source
+                ? "border-2 px-3 rounded cursor-grabbing border-green-500"
+                : "cursor-grab"
+            }
+            key={i}
           >
-            {value}
+            {ele}
           </div>
         );
       })}
@@ -46,6 +65,6 @@ const Resume = forwardRef((props, ref) => {
       <Summary /> */}
     </div>
   );
-});
+};
 
 export default Resume;
