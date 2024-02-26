@@ -6,10 +6,10 @@ const educationStore = create((set) => ({
   addEducation: (education) =>
     set((state) => ({ educations: [...state.educations, education] })),
 
-  deleteEducation: (title) =>
+  deleteEducation: (degree) =>
     set((state) => {
       state.educations = state.educations.filter(
-        (education) => education.title !== title
+        (education) => education.degree !== degree
       );
       return { educations: state.educations };
     }),
@@ -17,7 +17,7 @@ const educationStore = create((set) => ({
   editEducation: (education) =>
     set((state) => {
       state.educations = state.educations.map((pro) =>
-        pro.title === education.title ? education : pro
+        pro.degree === education.degree ? education : pro
       );
       return { educations: state.educations };
     }),

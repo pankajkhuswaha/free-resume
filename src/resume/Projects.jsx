@@ -1,5 +1,4 @@
 import { ExternalLink } from "lucide-react";
-import React from "react";
 import productStore from "../features/productStore";
 import SectionWrapper from "./Sections";
 

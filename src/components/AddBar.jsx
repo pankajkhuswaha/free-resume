@@ -1,5 +1,4 @@
 import { PlusCircleIcon } from "lucide-react";
-import React from "react";
 
 const AddBar = ({ onClick, title }) => {
   return (

@@ -1,9 +1,9 @@
 import { StarIcon } from "lucide-react";
+import strengthStore from "../features/strengthsStore";
 import SectionWrapper from "./Sections";
-import resumeDetails from "./data";
 
 const Strengths = () => {
-  const { strengths } = resumeDetails;
+  const { strengths } = strengthStore();
   return (
     <SectionWrapper title={"Strength"}>
       <div className="flex flex-wrap gap-4 justify-between">

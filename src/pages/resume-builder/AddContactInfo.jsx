@@ -6,7 +6,7 @@ import { contactSchema } from "../../schemas/contact";
 import contactStore from "../../features/contactInfoStore";
 
 const AddContactInfo = () => {
-  const [open, setopen] = useState(true);
+  const [open, setopen] = useState(false);
   const { details, addDetails } = contactStore();
   const {
     handleSubmit,
@@ -54,6 +54,7 @@ const AddContactInfo = () => {
               type="text"
               placeholder={input.placeholder}
               {...register(input.name)}
+              onFocus={() => setopen(true)}
               className={`form-input w-full ${errors[input.name]?.message && "error"}`}
             />
             <p className="text-red-500">{errors[input.name]?.message}</p>

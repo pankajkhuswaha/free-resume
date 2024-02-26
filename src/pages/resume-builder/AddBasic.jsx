@@ -7,7 +7,7 @@ import InfoStore from "../../features/infoStore";
 const AddBasic = () => {
   const { info, summary, addInfo, addSummary } = InfoStore();
   const { handleSubmit, register } = useForm({ defaultValues: info });
-  const [open, setopen] = useState(true);
+  const [open, setopen] = useState(false);
   return (
     <FormLayout
       title={"Basic Info's"}
@@ -26,6 +26,7 @@ const AddBasic = () => {
             type="text"
             {...register("name")}
             required
+            onFocus={()=>setopen(true)}
             className="form-input"
             placeholder="Name"
           />

@@ -1,8 +1,8 @@
+import educationStore from "../features/eductionsStore";
 import SectionWrapper from "./Sections";
-import resumeDetails from "./data";
 
 const Educations = () => {
-  const { educations } = resumeDetails;
+  const { educations } = educationStore();
   return (
     <SectionWrapper title={"Education"}>
       {educations.map((education, index) => {
