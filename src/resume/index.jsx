@@ -28,7 +28,8 @@ const Resume = (props, ref) => {
     const temp = resumeData[source];
     resumeData[source] = resumeData[target];
     resumeData[target] = temp;
-    console.log(resumeData)
+    console.log(source, target);
+
     setResumeFormat(resumeData);
   }, [source]);
 
@@ -38,18 +39,18 @@ const Resume = (props, ref) => {
         <h1>{info.name}</h1>
         <p className=" text-xl text-gray-500">{info.jobRole}</p>
       </div>
-      {resumeData.map((ele, i) => {
+      {resumeFormat.map((ele, i) => {
         return (
           <div
             draggable
             onDragStart={() => setIsDraggging(true)}
-            onDragOver={() => setSource(i)}
-            onDragEnd={() => setTarget(i)}
-            className={
+            onDragOver={() => setTarget(i)}
+            onDragEnd={() => setSource(i)}
+            className={`border-2 px-3 rounded ${
               isDraggging && i === source
-                ? "border-2 px-3 rounded cursor-grabbing border-green-500"
-                : "cursor-grab"
-            }
+                ? "cursor-grabbing border-green-500"
+                : "cursor-grab border-transparent"
+            }`}
             key={i}
           >
             {ele}
