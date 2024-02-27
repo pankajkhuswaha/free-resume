@@ -1,6 +1,7 @@
-import { Trash2 } from "lucide-react";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import React, { useEffect, useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import skillStore from "../../features/skillsStore";
+import { Trash2 } from "lucide-react";
 
 const Skills = () => {
   const skillsStore = skillStore();
@@ -10,6 +11,7 @@ const Skills = () => {
     if (!result.destination) return;
     const source = result.source.index;
     const target = result.destination.index;
+    if (source === null || target === null || source === target) return;
     const newSkills = [...skills];
     const [removed] = newSkills.splice(source, 1);
     newSkills.splice(target, 0, removed);
@@ -21,7 +23,7 @@ const Skills = () => {
       <Droppable droppableId="skills">
         {(provided) => (
           <div
-            className="w-full md:w-1/2 p-3 space-y-2"
+            className="w-full md:w-1/2 space-y-2"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

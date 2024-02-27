@@ -39,7 +39,7 @@ const StepCard = ({ step, index }) => {
 };
 const Guide = () => {
   return (
-    <section className="text-center container mx-auto p-3 mb-10">
+    <section className="text-center container mx-auto p-3">
       <p className="text-gray-500 bg-sky-100 w-fit mx-auto px-3 py-1 rounded mb-2">
         LEVEL UP YOUR JOB HUNT
       </p>

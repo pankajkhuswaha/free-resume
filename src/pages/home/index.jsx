@@ -14,7 +14,7 @@ const Homepage = () => {
       <Hero />
       <Guide />
 
-      <section id="templates" className=" container mx-auto p-3">
+      <section id="templates" className=" container mx-auto p-3 py-10 md:py-20">
         <h1 className="text-sky-600 md:text-5xl w-full text-center">
           Choose your favorite template
         </h1>
@@ -22,7 +22,7 @@ const Homepage = () => {
           Regardless of your background, there’s a lot's template in the Resume
           Builder that’s perfect for highlighting your experience & skill set.
         </p>
-        <div className="flex flex-wrap gap-8 mb-10 md:justify-center">
+        <div className="flex flex-wrap gap-8  md:justify-center">
           {resumeTemplates.map((template, i) => {
             return (
               <div

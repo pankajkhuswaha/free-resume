@@ -1,5 +1,4 @@
 import { ArrowLeft, ArrowRight, Save } from "lucide-react";
-import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 
 const FormLayout = ({
