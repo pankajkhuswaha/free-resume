@@ -6,9 +6,9 @@ export default {
       colors: {
         primary: { DEFAULT: "var(--primary-color)" },
       },
-      fontFamily:{
-        inter: ['Inter', 'sans-serif'],
-      }
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
     },
   },
   plugins: [],

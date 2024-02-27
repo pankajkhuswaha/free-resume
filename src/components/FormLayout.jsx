@@ -11,7 +11,7 @@ const FormLayout = ({
   open,
 }) => {
   return (
-    <div className="border rounded-xl shadow-lg p-3">
+    <div className="border rounded-xl shadow-lg p-6 my-4">
       <h1 className="text-gray-600 mb-4">{title}</h1>
 
       {children}

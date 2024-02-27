@@ -1,70 +1,65 @@
+import {
+  Activity,
+  BadgeInfo,
+  Briefcase,
+  FolderGit,
+  GraduationCap,
+  Phone,
+  ShieldCheck,
+} from "lucide-react";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import SidebarMenu from "./SidebarMenu";
 
 const Sidebar = () => {
   const menuItems = [
     {
-      icon: "icon1",
-      color: "color1",
+      color: "#FF9671",
       path: "/basic-info",
       name: "Basic Info",
+      icon: <BadgeInfo />,
     },
     {
-      icon: "icon2",
-      color: "color2",
+      color: "#FF6F91",
       path: "/contact-details",
       name: "Contact Details",
+      icon: <Phone />,
     },
     {
-      icon: "icon3",
-      color: "color3",
+      color: "#00D2FC",
       path: "/experiences",
       name: "Experiences",
+      icon: <Briefcase />,
     },
     {
-      icon: "icon4",
-      color: "color4",
+      color: "#FFC75F",
       path: "/projects",
       name: "Projects",
+      icon: <FolderGit />,
     },
     {
-      icon: "icon5",
-      color: "color5",
+      color: "#00C9A7",
       path: "/skills",
       name: "Skills",
+      icon: <Activity />,
     },
     {
-      icon: "icon6",
-      color: "color6",
+      color: "#0081CF",
       path: "/educations",
       name: "Educations",
+      icon: <GraduationCap />,
     },
     {
-      icon: "icon7",
-      color: "color7",
+      color: "#845EC2",
       path: "/strengths",
       name: "Strengths",
-    },
-    {
-      icon: "icon8",
-      color: "color8",
-      path: "/summary",
-      name: "Summary",
+      icon: <ShieldCheck />,
     },
   ];
   return (
     <div className="sticky top-[80px] p-2 space-y-2 rounded-2xl bg-gray-50 shadow-md min-h-[calc(100vh-100px)] flex flex-col">
-      {menuItems.map((menu, i) => {
-        return (
-          <NavLink
-            key={i}
-            to={"/app" + menu.path}
-            className="p-3 border-2 rounded-xl cursor-pointer transition-all duration-300 hover:bg-primary hover:text-white"
-          >
-            {menu.name}
-          </NavLink>
-        );
-      })}
+      {menuItems.map((menu, i) => (
+        <SidebarMenu key={i} menu={menu} />
+      ))}
     </div>
   );
 };
