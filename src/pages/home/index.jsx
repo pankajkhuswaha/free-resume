@@ -32,7 +32,7 @@ const Homepage = () => {
                 <img
                   onClick={() => {
                     selectResume(i);
-                    navigate("/app/");
+                    navigate("/app/basic-info");
                   }}
                   src={template.image}
                   alt="resume-image h-[200px] md:h-[350px]"
