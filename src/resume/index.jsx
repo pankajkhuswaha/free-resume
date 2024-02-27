@@ -22,6 +22,7 @@ const Resume = forwardRef((props, ref) => {
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="p-4">
           <Droppable droppableId="resume">
+          
             {(provided) => (
               <div {...provided.droppableProps} ref={provided.innerRef}>
                 {resumeFormat.map(({ id, component }, index) => (

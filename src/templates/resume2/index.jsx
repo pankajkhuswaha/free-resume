@@ -8,7 +8,7 @@ import Strengths from "../resume1/Strengths";
 import Summary from "../resume1/Summary";
 
 const resume2 = {
-  id: 2,
+  name: "Classic",
   image: "/resumes/2.png",
   template: [
     { id: "info", component: <Info /> },
