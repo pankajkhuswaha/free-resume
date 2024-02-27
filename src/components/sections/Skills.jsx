@@ -1,51 +1,67 @@
-import { useEffect, useState } from "react";
-import skillStore from "../../features/skillsStore";
 import { Trash2 } from "lucide-react";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import skillStore from "../../features/skillsStore";
 
 const Skills = () => {
   const skillsStore = skillStore();
   const { skills, deleteSkill } = skillsStore;
-  const [source, setSource] = useState();
-  const [target, setTarget] = useState();
-  const handleDrop = () => {
-    if (!source && !target) return;
-    skillStore.setState((state) => {
-      const newSkills = [...state.skills];
-      const temp = skills[source];
-      newSkills[source] = skills[target];
-      newSkills[target] = temp;
-      return { skills: newSkills };
-    });
+
+  const onDragEnd = (result) => {
+    if (!result.destination) return;
+    const source = result.source.index;
+    const target = result.destination.index;
+    const newSkills = [...skills];
+    const [removed] = newSkills.splice(source, 1);
+    newSkills.splice(target, 0, removed);
+    skillStore.setState({ skills: newSkills });
   };
-  useEffect(() => {
-    handleDrop();
-  }, [source]);
+
   return (
-    <div className="w-full md:w-1/2 p-3 space-y-2">
-      {skills.map((skill, index) => {
-        return (
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Droppable droppableId="skills">
+        {(provided) => (
           <div
-            draggable
-            onDragEnd={() => setSource(index)}
-            onDragOver={() => setTarget(index)}
-            key={index}
-            className="flex gap-2 border p-2 rounded cursor-grab justify-between"
+            className="w-full md:w-1/2 p-3 space-y-2"
+            {...provided.droppableProps}
+            ref={provided.innerRef}
           >
-            <div className="flex items-center gap-2">
-              <p className="font-semibold border px-2 py-1 rounded bg-gray-100">
-                {skill.name}
-              </p>
-              <p>{skill.level}</p>
-            </div>
-            <Trash2
-              color="red"
-              className=" cursor-pointer"
-              onClick={() => deleteSkill(skill.name)}
-            />
+            {skills.map((skill, index) => (
+              <Draggable
+                key={skill.name}
+                draggableId={skill.name}
+                index={index}
+              >
+                {(provided) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
+                    <div
+                      key={index}
+                      className="flex gap-2 border p-2 rounded cursor-grab justify-between"
+                    >
+                      <div className="flex items-center gap-2">
+                        <p className="font-semibold border px-2 py-1 rounded bg-gray-100">
+                          {skill.name}
+                        </p>
+                        <p>{skill.level}</p>
+                      </div>
+                      <Trash2
+                        color="red"
+                        className=" cursor-pointer"
+                        onClick={() => deleteSkill(skill.name)}
+                      />
+                    </div>
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
           </div>
-        );
-      })}
-    </div>
+        )}
+      </Droppable>
+    </DragDropContext>
   );
 };
 
