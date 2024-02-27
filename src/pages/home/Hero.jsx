@@ -3,7 +3,7 @@ import React from "react";
 const Hero = () => {
   return (
     <section>
-      <div className="container mx-auto p-3 flex md:py-20 md:px-10 justify-around items-center">
+      <div className="container mx-auto p-3 flex py-10 md:py-20 md:px-10 justify-around items-center">
         <div className="space-y-4 md:space-y-6 w-full md:w-[50%]">
           <p className="text-gray-500 bg-sky-100 w-fit px-3 py-1 rounded">
             THE BEST RESUME BUILDER ONLINE
@@ -22,7 +22,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="grid gap-4 w-full md:w-[40%]">
+        <div className="hidden md:grid gap-4 w-full md:w-[40%]">
           <img
             src="/resumes/2.png"
             alt=""

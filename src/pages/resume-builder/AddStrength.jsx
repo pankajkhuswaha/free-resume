@@ -46,7 +46,7 @@ const AddStrength = () => {
       {strengths.map((strength, i) => {
         return (
           <div key={i} className="w-full relative mb-2">
-            <div key={i} className="w-[48%]">
+            <div key={i} className="md:w-[48%]">
               <h2 className="flex items-center gap-2">
                 <StarIcon />
                 {strength.title}

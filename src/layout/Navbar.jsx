@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <div className="border-b shadow-md bg-white z-50 w-full sticky top-0">
       <div className="container mx-auto p-3 flex justify-between items-center">
-        <Link to={"/"} className="text-2xl font-bold text-primary">
+        <Link to={"/"} className="text-lg md:text-2xl font-bold text-primary">
           Resume Builder
         </Link>
         {id && (
@@ -25,14 +25,16 @@ const Navbar = () => {
                 onClick={handlePrint}
                 className="btn flex gap-2 items-center text-gray-800 font-semibold"
               >
-                <Download /> Download Resume
+                <Download /> Download{" "}
+                <span className="hidden md:block">Resume</span>
               </button>
             ) : (
               <Link
                 to={"/app/basic-info"}
-                className="btn flex gap-2 items-center text-gray-800 font-semibold capitalize"
+                className="btn flex gap-2 max-sm:text-sm items-center text-gray-800 font-semibold capitalize"
               >
-                continue building resume
+                continue building
+                <span className="hidden md:block">Resume</span>
               </Link>
             )}
           </>

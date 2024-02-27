@@ -9,7 +9,7 @@ const Strengths = () => {
       <div className="flex flex-wrap gap-4 justify-between">
         {strengths.map((strength, i) => {
           return (
-            <div key={i} className="w-[48%]">
+            <div key={i} className="w-full md:w-[48%]">
               <h2 className="flex items-center gap-2">
                 <StarIcon />
                 {strength.title}

@@ -22,19 +22,21 @@ const Homepage = () => {
           Regardless of your background, there’s a lot's template in the Resume
           Builder that’s perfect for highlighting your experience & skill set.
         </p>
-        <div className="flex gap-8 mb-10 md:justify-center">
+        <div className="flex flex-wrap gap-8 mb-10 md:justify-center">
           {resumeTemplates.map((template, i) => {
             return (
-              <div key={i}>
-                <div
+              <div
+                key={i}
+                className="w-[45%] md:w-80 shadow rounded-2xl hover:shadow-xl p-1 cursor-pointer border-2 overflow-hidden transition-all duration-300"
+              >
+                <img
                   onClick={() => {
                     selectResume(i);
                     navigate("/app/");
                   }}
-                  className="shadow rounded-2xl hover:shadow-xl p-1 cursor-pointer w-[45%] md:w-80 overflow-hidden transition-all duration-300"
-                >
-                  <img src={template.image} alt="resume-image" />
-                </div>
+                  src={template.image}
+                  alt="resume-image h-[200px] md:h-[350px]"
+                />
                 <p className="text-lg font-semibold text-center mt-4">
                   {template.name}
                 </p>

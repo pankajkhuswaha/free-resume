@@ -56,11 +56,18 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className="sticky top-[80px] p-2 space-y-2 rounded-2xl bg-gray-50 shadow-md min-h-[calc(100vh-100px)] flex flex-col">
-      {menuItems.map((menu, i) => (
-        <SidebarMenu key={i} menu={menu} />
-      ))}
-    </div>
+    <>
+      <div className="sticky top-[80px] p-2 space-y-2 rounded-2xl bg-gray-50 shadow-md min-h-[calc(100vh-100px)] hidden md:flex flex-col">
+        {menuItems.map((menu, i) => (
+          <SidebarMenu key={i} menu={menu} />
+        ))}
+      </div>
+      <div className="border rounded-2xl p-3 w-full flex md:hidden">
+        {menuItems.map((menu, i) => (
+          <SidebarMenu key={i} menu={menu} />
+        ))}
+      </div>
+    </>
   );
 };
 
