@@ -29,7 +29,7 @@ const Navbar = () => {
               </button>
             ) : (
               <Link
-                to={"/app"}
+                to={"/app/basic-info"}
                 className="btn flex gap-2 items-center text-gray-800 font-semibold capitalize"
               >
                 continue building resume
