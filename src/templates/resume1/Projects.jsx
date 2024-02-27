@@ -1,5 +1,5 @@
 import { ExternalLink } from "lucide-react";
-import productStore from "../features/productStore";
+import productStore from "../../features/productStore";
 import SectionWrapper from "./Sections";
 
 const Projects = () => {
@@ -22,7 +22,9 @@ const Projects = () => {
               {startDate} - {endDate}
             </p>
             {description.map((desc, i) => (
-              <li key={i}>{desc}</li>
+              <li className="text-sm" key={i}>
+                {desc}
+              </li>
             ))}
             <p>{project.technologies}</p>
             <p>

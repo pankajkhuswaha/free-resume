@@ -1,6 +1,6 @@
 import { MapPin } from "lucide-react";
 import React from "react";
-import useExperiences from "../features/useExperiences";
+import useExperiences from "../../features/useExperiences";
 import SectionWrapper from "./Sections";
 
 const Experience = () => {
@@ -14,17 +14,19 @@ const Experience = () => {
           <div key={i} className="mt-2">
             <h2 className="uppercase">{jobRole}</h2>
             <div className="flex flex-wrap items-center md:gap-3">
-              <h3 className="text-gray-500 text-md font-[600]">{company}</h3>
+              <p className="text-gray-500 text-md font-[600]">{company}</p>
               <p className="flex items-center gap-2 text-sm">
                 <MapPin size={15} /> {location}
               </p>
             </div>
-            <p>
+            <p className="text-sm">
               {startDate} - {endDate}
             </p>
             <ul>
               {description.map((desc, i) => (
-                <li key={i}>{desc}</li>
+                <li className="text-sm" key={i}>
+                  {desc}
+                </li>
               ))}
             </ul>
           </div>

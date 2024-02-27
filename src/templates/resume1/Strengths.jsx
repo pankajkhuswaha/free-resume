@@ -1,5 +1,5 @@
 import { StarIcon } from "lucide-react";
-import strengthStore from "../features/strengthsStore";
+import strengthStore from "../../features/strengthsStore";
 import SectionWrapper from "./Sections";
 
 const Strengths = () => {

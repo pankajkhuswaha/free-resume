@@ -1,6 +1,5 @@
-import educationStore from "../features/eductionsStore";
 import SectionWrapper from "./Sections";
-
+import educationStore from "../../features/eductionsStore";
 const Educations = () => {
   const { educations } = educationStore();
   return (

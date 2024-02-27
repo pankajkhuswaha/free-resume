@@ -1,4 +1,4 @@
-import contactStore from "../features/contactInfoStore";
+import contactStore from "../../features/contactInfoStore";
 
 const ContactDetails = () => {
   const { contactDetails } = contactStore();

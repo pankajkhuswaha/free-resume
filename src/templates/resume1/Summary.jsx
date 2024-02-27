@@ -1,4 +1,4 @@
-import InfoStore from "../features/infoStore";
+import InfoStore from "../../features/infoStore";
 import SectionWrapper from "./Sections";
 
 const Summary = () => {

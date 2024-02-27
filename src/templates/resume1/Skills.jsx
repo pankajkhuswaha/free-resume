@@ -1,6 +1,5 @@
-import skillStore from "../features/skillsStore";
+import skillStore from "../../features/skillsStore";
 import SectionWrapper from "./Sections";
-import resumeDetails from "./data";
 
 const Skills = () => {
   const { skills } = skillStore();

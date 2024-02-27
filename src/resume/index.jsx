@@ -1,71 +1,51 @@
-import React, { forwardRef, useEffect, useState } from "react";
-import InfoStore from "../features/infoStore";
-import ContactDetails from "./ContactInfo";
-import Educations from "./Educations";
-import Experience from "./Experience";
-import Projects from "./Projects";
-import Skills from "./Skills";
-import Strengths from "./Strengths";
-import Summary from "./Summary";
+import React, { forwardRef, useState } from "react";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import resumeStore from "../features/resumeStore";
 
-const Resume = (props, ref) => {
-  const { info } = InfoStore();
-  const resumeData = [
-    <ContactDetails />,
-    <Experience />,
-    <Projects />,
-    <Skills />,
-    <Educations />,
-    <Strengths />,
-    <Summary />,
-  ];
-  const [resumeFormat, setResumeFormat] = useState(resumeData);
+const Resume = forwardRef((props, ref) => {
+  // const resumeData = resume2.template;
+  const { selectedResume } = resumeStore();
+  const [resumeFormat, setResumeFormat] = useState(selectedResume.template);
 
-  const [isDraggging, setIsDraggging] = useState(false);
-  const [source, setSource] = useState();
-  const [target, setTarget] = useState();
-  useEffect(() => {
-    const temp = resumeData[source];
-    resumeData[source] = resumeData[target];
-    resumeData[target] = temp;
-    console.log(source, target);
+  const onDragEnd = (result) => {
+    if (!result.destination) return;
 
-    setResumeFormat(resumeData);
-  }, [source]);
+    const items = Array.from(resumeFormat);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setResumeFormat(items);
+  };
 
   return (
-    <div className="p-4 ">
-      <div className="intro">
-        <h1>{info.name}</h1>
-        <p className=" text-xl text-gray-500">{info.jobRole}</p>
-      </div>
-      {resumeFormat.map((ele, i) => {
-        return (
-          <div
-            draggable
-            onDragStart={() => setIsDraggging(true)}
-            onDragOver={() => setTarget(i)}
-            onDragEnd={() => setSource(i)}
-            className={`border-2 px-3 rounded ${
-              isDraggging && i === source
-                ? "cursor-grabbing border-green-500"
-                : "cursor-grab border-transparent"
-            }`}
-            key={i}
-          >
-            {ele}
-          </div>
-        );
-      })}
-      {/* <ContactDetails />
-      <Experience />
-      <Projects />
-      <Skills />
-      <Educations />
-      <Strengths />
-      <Summary /> */}
+    <div ref={ref}>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <div className="p-4">
+          <Droppable droppableId="resume">
+            {(provided) => (
+              <div {...provided.droppableProps} ref={provided.innerRef}>
+                {resumeFormat.map(({ id, component }, index) => (
+                  <Draggable key={id} draggableId={id} index={index}>
+                    {(provided) => (
+                      <div
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                        className="border-2 px-2 rounded cursor-grab border-transparent"
+                      >
+                        {component}
+                      </div>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </div>
+      </DragDropContext>
     </div>
   );
-};
+});
 
 export default Resume;

@@ -12,13 +12,13 @@ const resumeDetails = {
       icon: <Airplay size={15} />,
     },
     mobile: {
-      label: `+91 9315448505`,
-      link: "tel:9315448505",
+      label: `+91 999999999`,
+      link: "tel:999999999",
       icon: <Phone size={15} />,
     },
     email: {
-      label: "khuswahapankaj00@gmail.com",
-      link: "mailto:khuswahapankaj00@gmail.com",
+      label: "email@gmail.com",
+      link: "mailto:email@gmail.com",
       icon: <Mail size={15} />,
     },
     address: {
