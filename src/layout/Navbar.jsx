@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import ResumeToPrint from "../resume/ResumeToPrint";
-import Resume from "../resume";
 
 const Navbar = () => {
   const componentRef = useRef();
