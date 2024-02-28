@@ -1,10 +1,13 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import resumeStore from "../features/resumeStore";
 
 const Resume = forwardRef((_props, ref) => {
   const { selectedResume, changeResumeLayout } = resumeStore();
   const [resumeFormat, setResumeFormat] = useState(selectedResume.template);
+  useEffect(() => {
+    setResumeFormat(selectedResume.template);
+  }, [selectedResume]);
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
@@ -18,7 +21,7 @@ const Resume = forwardRef((_props, ref) => {
   };
 
   return (
-    <div ref={ref}>
+    <div key={selectedResume} ref={ref}>
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="p-4">
           <Droppable droppableId="resume">

@@ -1,10 +1,17 @@
 import { create } from "zustand";
 import resumeDetails from "../constants/resume";
+import { fetchData, saveData } from "../utils";
 
 const InfoStore = create((set) => ({
-  info: resumeDetails.info,
-  summary: resumeDetails.summary,
-  addInfo: (info) => set(() => ({ info })),
-  addSummary: (summary) => set(() => ({ summary })),
+  info: fetchData("info") || resumeDetails.info,
+  summary: fetchData("summary") || resumeDetails.summary,
+  addInfo: (info) => {
+    saveData("info", info);
+    set({ info });
+  },
+  addSummary: (summary) => {
+    saveData("summary", summary);
+    set({ summary });
+  },
 }));
 export default InfoStore;

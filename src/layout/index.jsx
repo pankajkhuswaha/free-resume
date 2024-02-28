@@ -2,11 +2,13 @@ import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ScrollToTop from "../utils/ScrollToTop";
+import ThemeManager from "../utils/ResumeThemeManger";
 
 const Layout = ({ children }) => {
   return (
-    <div className=" relative">
+    <div className="relative">
       <ScrollToTop />
+      <ThemeManager />
       <Navbar />
       <div className="mx-auto">{children}</div>
       <Footer />

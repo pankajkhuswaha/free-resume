@@ -11,6 +11,7 @@ import AddSkills from "./pages/resume-builder/AddSkills";
 import AddEducation from "./pages/resume-builder/AddEducation";
 import AddStrength from "./pages/resume-builder/AddStrength";
 import Homepage from "./pages/home";
+import Theme from "./pages/resume-builder/Theme";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="skills" element={<AddSkills />} />
             <Route path="educations" element={<AddEducation />} />
             <Route path="strengths" element={<AddStrength />} />
+            <Route path="theme" element={<Theme />} />
           </Route>
         </Routes>
       </Layout>

@@ -4,6 +4,7 @@ import {
   Briefcase,
   FolderGit,
   GraduationCap,
+  Palette,
   Phone,
   ShieldCheck,
 } from "lucide-react";
@@ -53,6 +54,12 @@ const Sidebar = () => {
       path: "/strengths",
       name: "Strengths",
       icon: <ShieldCheck />,
+    },
+    {
+      color: "#008F7A",
+      path: "/theme",
+      name: "Change Theme",
+      icon: <Palette />,
     },
   ];
   return (

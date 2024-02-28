@@ -36,7 +36,7 @@ ul {
 }
 
 .mini-card {
-  @apply border cursor-pointer rounded  flex flex-wrap items-center justify-center w-fit p-1 px-2 gap-2;
+  @apply border border-primary-100 cursor-pointer bg-primary-100 rounded flex flex-wrap items-center justify-center w-fit p-1 px-2 gap-2;
 }
 .btn {
   @apply border-2 rounded cursor-pointer border-primary hover:bg-primary hover:text-white transition-all duration-300 px-3 py-1;

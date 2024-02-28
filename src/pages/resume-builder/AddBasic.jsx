@@ -26,7 +26,7 @@ const AddBasic = () => {
             type="text"
             {...register("name")}
             required
-            onFocus={()=>setopen(true)}
+            onFocus={() => setopen(true)}
             className="form-input"
             placeholder="Name"
           />
@@ -35,12 +35,14 @@ const AddBasic = () => {
             {...register("jobRole")}
             required
             className="form-input"
+            onFocus={() => setopen(true)}
             placeholder="Job Title"
           />
         </div>
         <textarea
           defaultValue={summary}
           rows={10}
+          onFocus={() => setopen(true)}
           onBlur={(e) => addSummary(e.target.value)}
           className="form-input w-full"
           placeholder="write a detailed summary"

@@ -7,7 +7,7 @@ const Skills = () => {
     <SectionWrapper title={"Skills"}>
       <div className="flex gap-2 flex-wrap">
         {skills.map((skill, i) => (
-          <p key={i} className="mini-card bg-sky-100">
+          <p key={i} className="mini-card">
             {skill.name}
           </p>
         ))}

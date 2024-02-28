@@ -86,7 +86,6 @@ const resumeDetails = {
     { name: "React Js", level: "Advanced" },
     { name: "Express Js", level: "Intermediate" },
     { name: "Node Js", level: "Advanced" },
-    { name: "React Js", level: "Advanced" },
     { name: "Angular Js (Framework)", level: "Intermediate" },
     { name: "MongoDB", level: "Intermediate" },
     { name: "Tailwind css", level: "Intermediate" },
