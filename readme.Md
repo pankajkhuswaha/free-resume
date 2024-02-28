@@ -17,6 +17,8 @@ Welcome to the Resume Builder project! This is a web application built using Rea
 
 ## Project Screenshots
 
+![Resume Screenshot](https://i.ibb.co/McqRZh7/resume.png)
+
 ![Home Screenshot 1](https://i.ibb.co/C80ZZ4p/home1.png) 
 
 ![Home Screenshot 2](https://i.ibb.co/2j6BG31/home2.png) 
@@ -24,8 +26,6 @@ Welcome to the Resume Builder project! This is a web application built using Rea
 ![Home Screenshot 3](https://i.ibb.co/6gB2q52/home3.png) 
 
 ![Home Screenshot 4](https://i.ibb.co/FnLzYXw/home4.png) 
-
-![Resume Screenshot](https://i.ibb.co/McqRZh7/resume.png)
 
 ![Dashboard Screenshot 1](https://i.ibb.co/9pv7WFP/dashboard1.png) 
 
@@ -48,9 +48,6 @@ Welcome to the Resume Builder project! This is a web application built using Rea
 ## Tech Stack
 
 **Client:** React, Zustand, TailwindCSS,Beautiful-DND
-
-
-
 
 ## Run Locally
 
