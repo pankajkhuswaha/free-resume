@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import resumeStore from "../features/resumeStore";
 
-const ResumeToPrint = forwardRef(({}, ref) => {
+const ResumeToPrint = forwardRef((props, ref) => {
   const { resumeFormat, selectedResume } = resumeStore();
 
   return (
