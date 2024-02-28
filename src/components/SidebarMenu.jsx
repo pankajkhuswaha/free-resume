@@ -18,7 +18,7 @@ const SidebarMenu = ({ menu }) => {
             style={{
               backgroundColor: color,
             }}
-            className="px-3 tip py-1 rounded-md whitespace-nowrap text-white"
+            className="tip px-1 py-1 rounded-md whitespace-nowrap text-white"
           >
             {name}
           </div>

@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
-import Resume from "../resume";
-import { useReactToPrint } from "react-to-print";
 import { Download } from "lucide-react";
+import React, { useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
+import Resume from "../resume";
+import ResumeToPrint from "../resume/ResumeToPrint";
 
 const Navbar = () => {
   const componentRef = useRef();
@@ -45,7 +46,7 @@ const Navbar = () => {
           </a>
         )}
         <div className="hidden">
-          <Resume ref={componentRef} />
+          <ResumeToPrint ref={componentRef} />
         </div>
       </div>
     </div>

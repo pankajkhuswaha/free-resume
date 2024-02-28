@@ -62,7 +62,7 @@ const Sidebar = () => {
           <SidebarMenu key={i} menu={menu} />
         ))}
       </div>
-      <div className="border rounded-2xl p-3 w-full flex md:hidden">
+      <div className="border rounded-2xl w-full flex md:hidden">
         {menuItems.map((menu, i) => (
           <SidebarMenu key={i} menu={menu} />
         ))}

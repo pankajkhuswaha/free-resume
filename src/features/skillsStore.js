@@ -1,24 +1,36 @@
 import { create } from "zustand";
 import resumeDetails from "../constants/resume";
+import { fetchData, save } from "../utils";
 
 const skillStore = create((set) => ({
-  skills: resumeDetails.skills,
+  skills: fetchData("skills") || resumeDetails.skills,
+  reArrangeSkills: (skills) => {
+    set({ skills });
+    save("skills", skills);
+  },
   addSkill: (skill) => {
-    set((state) => ({ skills: [...state.skills, skill] }));
+    set((state) => {
+      const newSkills = [...state.skills, skill];
+      save("skills", newSkills);
+      return { skills: newSkills };
+    });
   },
 
-  deleteSkill: (name) =>
+  deleteSkill: (index) =>
     set((state) => {
-      state.skills = state.skills.filter((skill) => skill.name !== name);
-      return { skills: state.skills };
+      const newSkills = [...state.skills];
+      newSkills.splice(index, 1);
+      save("skills", newSkills);
+      return { skills: newSkills };
     }),
 
   editSkill: (skill) =>
     set((state) => {
-      state.skills = state.skills.map((pro) =>
+      const newSkills = state.skills.map((pro) =>
         pro.name === skill.name ? skill : pro
       );
-      return { skills: state.skills };
+      save("skills", newSkills);
+      return { skills: newSkills };
     }),
 }));
 export default skillStore;

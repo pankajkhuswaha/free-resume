@@ -16,7 +16,7 @@ const AddSkills = () => {
     >
       <div className="w-full max-md:flex-wrap flex gap-4">
         <Skills />
-        <div className="w-full md:w-1/2 p-3">
+        <div className="w-full md:w-1/2">
           <form
             onSubmit={handleSubmit((val) => {
               addSkill(val);

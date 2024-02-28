@@ -5,7 +5,7 @@ import { Trash2 } from "lucide-react";
 
 const Skills = () => {
   const skillsStore = skillStore();
-  const { skills, deleteSkill } = skillsStore;
+  const { skills, deleteSkill, reArrangeSkills } = skillsStore;
 
   const onDragEnd = (result) => {
     if (!result.destination) return;
@@ -15,7 +15,7 @@ const Skills = () => {
     const newSkills = [...skills];
     const [removed] = newSkills.splice(source, 1);
     newSkills.splice(target, 0, removed);
-    skillStore.setState({ skills: newSkills });
+    reArrangeSkills(newSkills);
   };
 
   return (
@@ -52,7 +52,7 @@ const Skills = () => {
                       <Trash2
                         color="red"
                         className=" cursor-pointer"
-                        onClick={() => deleteSkill(skill.name)}
+                        onClick={() => deleteSkill(index)}
                       />
                     </div>
                   </div>
