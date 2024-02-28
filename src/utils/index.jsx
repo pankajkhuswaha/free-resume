@@ -1,5 +1,4 @@
 import { Airplay, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import contactStore from "../features/contactInfoStore";
 
 export const saveData = (token, data) => {
   localStorage.setItem(token, JSON.stringify(data));
@@ -11,6 +10,8 @@ export const fetchData = (token) => {
 
 export const getFormatedData = (detailInfos) => {
   const details = detailInfos || fetchData("details");
+  if (!details) return {};
+
   const contactDetails = {
     portfolio: details.portfolio && {
       label: "Portfolio",
