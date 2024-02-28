@@ -4,6 +4,7 @@ import SectionWrapper from "./Sections";
 
 const Strengths = () => {
   const { strengths } = strengthStore();
+  if (strengths && strengths?.length === 0) return;
   return (
     <SectionWrapper title={"Strength"}>
       <div className="flex flex-wrap gap-4 justify-between">

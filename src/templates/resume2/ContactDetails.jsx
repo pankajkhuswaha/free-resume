@@ -14,7 +14,7 @@ const ContactDetails = () => {
             // className="mini-card"
             className="flex items-center gap-1"
           >
-            <span className="svg-icon text-sm text-gray-600 size-5 flex items-center justify-center ">
+            <span className="svg-icon text-sm text-gray-600 text-primary size-5 flex items-center justify-center ">
               {value.icon}
             </span>
             <span className="icon-txt text-xs">{value.label}</span>

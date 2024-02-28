@@ -8,7 +8,7 @@ const Theme = () => {
   const { setPrimaryColor, primaryColor } = resumeThemeStore();
   return (
     <div className="rounded-2xl shadow p-3 mt-2">
-      <div className="flex w-full border justify-between p-3 rounded-2xl items-center shadow-lg mb-4">
+      <div className="flex flex-wrap w-full border justify-between p-3 rounded-2xl items-center shadow-lg mb-4">
         <h1 className="text-2xl text-primary">Change Resume Color</h1>
         <div
           className={`border-2  w-1/2 rounded-md h-10 flex items-center overflow-hidden`}
@@ -16,6 +16,8 @@ const Theme = () => {
           <input
             style={{ background: primaryColor }}
             type="text"
+            value={primaryColor}
+            onChange={(e) => setPrimaryColor(e.target.value)}
             className="w-[80%] pl-4 h-full"
           />
           <input

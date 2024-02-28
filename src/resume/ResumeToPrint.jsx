@@ -1,12 +1,11 @@
 import { forwardRef } from "react";
 import resumeStore from "../features/resumeStore";
 
-const ResumeToPrint = forwardRef(({  }, ref) => {
-  const { resumeFormat } = resumeStore();
-  console.log(resumeFormat)
+const ResumeToPrint = forwardRef(({}, ref) => {
+  const { resumeFormat, selectedResume } = resumeStore();
 
   return (
-    <div ref={ref} className="p-4">
+    <div key={JSON.stringify(selectedResume)} ref={ref} className="p-4">
       {resumeFormat.map((item, index) => {
         return (
           <div key={index} className="mb-4">

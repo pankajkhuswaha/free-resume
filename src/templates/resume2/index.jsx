@@ -1,11 +1,11 @@
 import ContactDetails from "./ContactDetails";
-import Educations from "../resume1/Educations";
 import Experience from "../resume1/Experience";
-import Info from "../resume1/Info";
 import Projects from "../resume1/Projects";
 import Skills from "../resume1/Skills";
 import Strengths from "../resume1/Strengths";
 import Summary from "../resume1/Summary";
+import Educations from "./Eductions";
+import Info from "./Info";
 
 const resume2 = {
   name: "Classic",

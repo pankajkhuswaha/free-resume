@@ -4,7 +4,7 @@ import { fetchData, saveData } from "../utils";
 
 const InfoStore = create((set) => ({
   info: fetchData("info") || resumeDetails.info,
-  summary: fetchData("summary") || resumeDetails.summary,
+  summary: fetchData("summary"),
   addInfo: (info) => {
     saveData("info", info);
     set({ info });
