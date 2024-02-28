@@ -59,7 +59,7 @@ const AddEducation = () => {
                 reset(education);
               }}
               onDelteBtnClick={() => {
-                deleteEducation(education.degree);
+                deleteEducation(i);
               }}
             />
           </div>

@@ -14,9 +14,12 @@ const Project = ({ project }) => {
       <p>
         {startDate} - {endDate}
       </p>
-      {description.map((desc, i) => (
-        <li key={i}>{desc}</li>
-      ))}
+      <div className=" line-clamp-1">
+        {description.map((desc, i) => (
+          <li key={i}>{desc}</li>
+        ))}
+      </div>
+
       <p>{project.technologies}</p>
       <p>
         <span className="text-md font-bold">Tech stack :</span>

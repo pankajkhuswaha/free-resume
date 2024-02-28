@@ -1,26 +1,30 @@
 import { create } from "zustand";
 import resumeDetails from "../constants/resume";
+import { fetchData, saveData } from "../utils";
 
 const strengthStore = create((set) => ({
-  strengths: resumeDetails.strengths,
+  strengths: fetchData("strengths") || resumeDetails.strengths,
   addStrength: (strength) => {
-    set((state) => ({ strengths: [...state.strengths, strength] }));
+    const newStrengths = [...state.strengths, strength];
+    saveData("strengths", newStrengths);
+    set({ strengths: newStrengths });
   },
 
-  deleteStrength: (title) =>
+  deleteStrength: (index) =>
     set((state) => {
-      state.strengths = state.strengths.filter(
-        (strength) => strength.title !== title
-      );
-      return { strengths: state.strengths };
+      const newStrengths = [...state.strengths];
+      newStrengths.splice(index, 1);
+      saveData("strengths", newStrengths);
+      return { strengths: newStrengths };
     }),
 
   editStrength: (strength) =>
     set((state) => {
-      state.strengths = state.strengths.map((pro) =>
+      const newStrengths = state.strengths.map((pro) =>
         pro.title === strength.title ? strength : pro
       );
-      return { strengths: state.strengths };
+      saveData("strengths", newStrengths);
+      return { strengths: newStrengths };
     }),
 }));
 export default strengthStore;

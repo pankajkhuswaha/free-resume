@@ -63,7 +63,7 @@ const AddExperience = () => {
                 reset(experience);
               }}
               onDelteBtnClick={() => {
-                deleteExperience(experience.company);
+                deleteExperience(i);
               }}
             />
           </div>
@@ -111,6 +111,13 @@ const AddExperience = () => {
             ></textarea>
             <p className="text-red-500 mt-0">
               {errors["description"]?.message}
+            </p>
+            <p>
+              Note :{" "}
+              <span className="text-blue-500">
+                {" "}
+                Include <b>'&'</b> symbol to create bullet points
+              </span>{" "}
             </p>
           </div>
         </form>

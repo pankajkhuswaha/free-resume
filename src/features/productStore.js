@@ -1,25 +1,32 @@
 import { create } from "zustand";
 import resumeDetails from "../constants/resume";
+import { fetchData, saveData } from "../utils";
 
 const productStore = create((set) => ({
-  projects: resumeDetails.projects,
-  addProject: (project) =>
-    set((state) => ({ projects: [...state.projects, project] })),
-
-  deleteProject: (title) =>
+  projects: fetchData("projects") || resumeDetails.projects,
+  addProject: (project) => {
     set((state) => {
-      state.projects = state.projects.filter(
-        (project) => project.title !== title
-      );
-      return { projects: state.projects };
+      const newProjects = [...state.projects, project];
+      saveData("projects", newProjects);
+      return { projects: newProjects };
+    });
+  },
+
+  deleteProject: (index) =>
+    set((state) => {
+      const newProjects = [...state.projects];
+      newProjects.splice(index, 1);
+      saveData("projects", newProjects);
+      return { projects: newProjects };
     }),
 
   editProject: (project) =>
     set((state) => {
-      state.projects = state.projects.map((pro) =>
+      const newProjects = state.projects.map((pro) =>
         pro.title === project.title ? project : pro
       );
-      return { projects: state.projects };
+      saveData("projects", newProjects);
+      return { projects: newProjects };
     }),
 }));
 export default productStore;

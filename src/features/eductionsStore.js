@@ -1,25 +1,32 @@
 import { create } from "zustand";
 import resumeDetails from "../constants/resume";
+import { fetchData, saveData } from "../utils";
 
 const educationStore = create((set) => ({
-  educations: resumeDetails.educations,
-  addEducation: (education) =>
-    set((state) => ({ educations: [...state.educations, education] })),
-
-  deleteEducation: (degree) =>
+  educations: fetchData("educations") || resumeDetails.educations,
+  addEducation: (education) => {
     set((state) => {
-      state.educations = state.educations.filter(
-        (education) => education.degree !== degree
-      );
-      return { educations: state.educations };
+      const newEducations = [...state.educations, education];
+      saveData("educations", newEducations);
+      return { educations: newEducations };
+    });
+  },
+
+  deleteEducation: (index) =>
+    set((state) => {
+      const newEducations = [...state.educations];
+      newEducations.splice(index, 1);
+      saveData("educations", newEducations);
+      return { educations: newEducations };
     }),
 
   editEducation: (education) =>
     set((state) => {
-      state.educations = state.educations.map((pro) =>
+      const newEducations = state.educations.map((pro) =>
         pro.degree === education.degree ? education : pro
       );
-      return { educations: state.educations };
+      saveData("educations", newEducations);
+      return { educations: newEducations };
     }),
 }));
 export default educationStore;

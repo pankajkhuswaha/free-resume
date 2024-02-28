@@ -56,11 +56,11 @@ const AddStrength = () => {
             <ActionButtons
               onEditBtnClick={() => {
                 setOpen(true);
-                selectedStrength(strength);
+                setSelectedStrength(strength);
                 reset(strength);
               }}
               onDelteBtnClick={() => {
-                deleteStrength(strength.title);
+                deleteStrength(i);
               }}
             />
           </div>

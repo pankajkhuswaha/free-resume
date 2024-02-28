@@ -1,4 +1,4 @@
-export const save = (token, data) => {
+export const saveData = (token, data) => {
   localStorage.setItem(token, JSON.stringify(data));
 };
 

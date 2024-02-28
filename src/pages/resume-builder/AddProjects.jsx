@@ -64,7 +64,7 @@ const AddProject = () => {
                 reset(project);
               }}
               onDelteBtnClick={() => {
-                deleteProject(project.company);
+                deleteProject(i);
               }}
             />
           </div>
@@ -112,6 +112,13 @@ const AddProject = () => {
             ></textarea>
             <p className="text-red-500 mt-0">
               {errors["description"]?.message}
+            </p>
+            <p>
+              Note :{" "}
+              <span className="text-blue-500">
+                {" "}
+                Include <b>'&'</b> symbol to create bullet points
+              </span>{" "}
             </p>
           </div>
           <div className="w-full flex gap-4">

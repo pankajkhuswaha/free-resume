@@ -15,11 +15,13 @@ const Experience = ({ experience }) => {
       <p>
         {startDate} - {endDate}
       </p>
-      <ul>
-        {description.map((desc, i) => (
-          <li key={i}>{desc}</li>
-        ))}
-      </ul>
+      <div className=" line-clamp-2">
+        <ul>
+          {description.map((desc, i) => (
+            <li key={i}>{desc}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

@@ -1,17 +1,17 @@
 import { create } from "zustand";
 import resumeDetails from "../constants/resume";
-import { fetchData, save } from "../utils";
+import { fetchData, saveData } from "../utils";
 
 const skillStore = create((set) => ({
   skills: fetchData("skills") || resumeDetails.skills,
   reArrangeSkills: (skills) => {
     set({ skills });
-    save("skills", skills);
+    saveData("skills", skills);
   },
   addSkill: (skill) => {
     set((state) => {
       const newSkills = [...state.skills, skill];
-      save("skills", newSkills);
+      saveData("skills", newSkills);
       return { skills: newSkills };
     });
   },
@@ -20,7 +20,7 @@ const skillStore = create((set) => ({
     set((state) => {
       const newSkills = [...state.skills];
       newSkills.splice(index, 1);
-      save("skills", newSkills);
+      saveData("skills", newSkills);
       return { skills: newSkills };
     }),
 
@@ -29,7 +29,7 @@ const skillStore = create((set) => ({
       const newSkills = state.skills.map((pro) =>
         pro.name === skill.name ? skill : pro
       );
-      save("skills", newSkills);
+      saveData("skills", newSkills);
       return { skills: newSkills };
     }),
 }));

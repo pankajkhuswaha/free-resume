@@ -1,25 +1,32 @@
 import { create } from "zustand";
 import resumeDetails from "../constants/resume";
+import { fetchData, saveData } from "../utils";
 
 const useExperiences = create((set) => ({
-  experiences: resumeDetails.experiences,
-  addExperience: (experience) =>
-    set((state) => ({ experiences: [...state.experiences, experience] })),
+  experiences: fetchData("experiences") || resumeDetails.experiences,
+  addExperience: (experience) => {
+     set((state) => {
+       const newExperiences = [...state.experiences, experience];
+       saveData("experiences", newExperiences);
+       return { experiences: newExperiences };
+     });
+  },
 
-  deleteExperience: (company) =>
+  deleteExperience: (index) =>
     set((state) => {
-      state.experiences = state.experiences.filter(
-        (experience) => experience.company !== company
-      );
-      return { experiences: state.experiences };
+      const newExperiences = [...state.experiences];
+      newExperiences.splice(index, 1);
+      saveData("experiences", newExperiences);
+      return { experiences: newExperiences };
     }),
 
   editExperience: (experience) =>
     set((state) => {
-      state.experiences = state.experiences.map((exp) =>
-        exp.company === experience.company ? experience : exp
+      const newExperiences = state.experiences.map((pro) =>
+        pro.title === experience.title ? experience : pro
       );
-      return { experiences: state.experiences };
+      saveData("experiences", newExperiences);
+      return { experiences: newExperiences };
     }),
 }));
 
