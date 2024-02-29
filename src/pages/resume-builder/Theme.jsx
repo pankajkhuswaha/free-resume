@@ -29,7 +29,7 @@ const Theme = () => {
         </div>
       </div> */}
       <h1 className="text-2xl text-primary px-3">Change Resume Template</h1>
-      <div className="flex gap-4 mt-4 px-3">
+      <div className="flex flex-wrap gap-4 mt-4 px-3">
         {resumeTemplates.map((template, i) => {
           return (
             <div

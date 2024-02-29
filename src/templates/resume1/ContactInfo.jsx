@@ -3,7 +3,7 @@ import contactStore from "../../features/contactInfoStore";
 const ContactDetails = () => {
   const { contactDetails } = contactStore();
   return (
-    <div className="address-container mt-2 flex gap-2 flex-wrap">
+    <div className="address-container flex gap-2 flex-wrap">
       {Object.entries(contactDetails).map(([key, value]) => {
         if (value) {
           return (

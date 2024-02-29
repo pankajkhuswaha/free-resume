@@ -5,11 +5,11 @@ const Info = () => {
   const { info } = InfoStore();
   return (
     <>
-      <div className="intro">
+      <div className="intro mt-4">
         <h1 className="text-center text-3xl text-gray-700">{info.name}</h1>
-        <p className="text-lg text-center font-semibold text-gray-500">
+        {/* <p className="text-lg text-center font-semibold text-gray-500">
           {info.jobRole}
-        </p>
+        </p> */}
       </div>
       <Contact />
       {/* <Divider/> */}

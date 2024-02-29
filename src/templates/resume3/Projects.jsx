@@ -18,7 +18,7 @@ const Projects = () => {
               <a
                 href={link}
                 target="blank"
-                className="text-md font-semibold flex gap-2 cursor-pointer items-center"
+                className="text-sm mb-1 font-semibold flex gap-2 cursor-pointer items-center"
               >
                 {title} <ExternalLink size={20} />
               </a>
@@ -27,7 +27,7 @@ const Projects = () => {
               </p>
             </div>
             {description.map((desc, i) => (
-              <li className="text-[14px] ml-2" key={i}>
+              <li className="text-[13px] ml-2" key={i}>
                 {desc}
               </li>
             ))}

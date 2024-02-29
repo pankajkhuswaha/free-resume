@@ -17,16 +17,16 @@ const Experience = () => {
             <h2 className="uppercase">{jobRole}</h2>
             <div className="flex flex-wrap items-center md:gap-3">
               <p className="text-gray-500 text-md font-[600]">{company}</p>
-              <p className="flex items-center gap-2 text-sm">
+              <p className="flex items-center gap-2 text-xs">
                 <MapPin size={15} /> {location}
               </p>
             </div>
-            <p className="text-sm">
+            <p className="text-xs">
               {startDate} - {endDate}
             </p>
             <ul>
               {description.map((desc, i) => (
-                <li className="text-sm" key={i}>
+                <li className="text-[12px]" key={i}>
                   {desc}
                 </li>
               ))}

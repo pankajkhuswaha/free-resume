@@ -14,7 +14,7 @@ const MonthYearInput = ({ className, label, onChange, error }) => {
   }, [value]);
 
   useEffect(() => {
-    setValue(`${month}-${year}`);
+    setValue(`${month} ${year}`);
     onChange && onChange(value);
   }, [month, year]);
 

@@ -24,7 +24,7 @@ const Experience = () => {
                 <p className="text-xs">
                   {startDate} - {endDate}
                 </p>
-                <p className="flex items-center gap-2 text-sm">
+                <p className="flex items-center gap-2 text-xs">
                   <MapPin size={15} /> {location}
                 </p>
               </div>
@@ -32,7 +32,7 @@ const Experience = () => {
 
             <ul>
               {description.map((desc, i) => (
-                <li className="text-[14px] ml-2" key={i}>
+                <li className="text-[13px] ml-2" key={i}>
                   {desc}
                 </li>
               ))}

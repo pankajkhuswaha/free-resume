@@ -24,7 +24,7 @@ const Projects = () => {
               {startDate} - {endDate}
             </p>
             {description.map((desc, i) => (
-              <li className="text-sm" key={i}>
+              <li className="text-[13px]" key={i}>
                 {desc}
               </li>
             ))}
