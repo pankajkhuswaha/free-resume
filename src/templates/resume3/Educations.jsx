@@ -10,7 +10,7 @@ const Educations = () => {
           const { degree, college, location, startDate, endDate } = education;
           return (
             <div className="education md:w-1/2" key={index}>
-              <h3 className="text-lg font-semibold">{degree}</h3>
+              <h3 className="text-md font-semibold">{degree}</h3>
               <p>{college}</p>
               <p>
                 {startDate} - {endDate}

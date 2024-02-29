@@ -15,16 +15,18 @@ const Skills = () => {
 
   return (
     <SectionWrapper title={"Skills"}>
-      {Object.entries(groupedSkills).map(([type, typeSkills]) => (
-        <div key={type} className="flex mt-2">
-          <h3 className="text-md font-semibold mr-2 whitespace-nowrap">
-            {type} :{" "}
-          </h3>
-          <div className="flex gap-2 text-gray-600 font-semibold flex-wrap">
-            {typeSkills.map((skill, i) => skill.name).join(", ")}
+      <div className="mt-2">
+        {Object.entries(groupedSkills).map(([type, typeSkills]) => (
+          <div key={type} className="flex mt-[2px]">
+            <h3 className="text-sm font-semibold text-gray-600 mr-2 whitespace-nowrap">
+              {type} :{" "}
+            </h3>
+            <div className="flex gap-2 text-sm font-semibold flex-wrap text-gray-800">
+              {typeSkills.map((skill, i) => skill.name).join(", ")}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </SectionWrapper>
   );
 };

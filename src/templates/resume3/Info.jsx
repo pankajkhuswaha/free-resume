@@ -1,6 +1,5 @@
 import InfoStore from "../../features/infoStore";
 import Contact from "./Conatct";
-import Divider from "./Divider";
 
 const Info = () => {
   const { info } = InfoStore();
@@ -13,7 +12,7 @@ const Info = () => {
         </p>
       </div>
       <Contact />
-      <Divider/>
+      {/* <Divider/> */}
     </>
   );
 };

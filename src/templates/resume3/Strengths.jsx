@@ -7,15 +7,15 @@ const Strengths = () => {
   if (strengths && strengths?.length === 0) return;
   return (
     <SectionWrapper title={"Strengths"}>
-      <div className="flex flex-wrap gap-4 justify-between">
+      <div className="flex flex-wrap gap-4 justify-between mt-2">
         {strengths.map((strength, i) => {
           return (
-            <div key={i} className="w-full md:w-[48%]">
-              <p className="flex items-center gap-2 text-lg font-semibold">
+            <div key={i} className="max-sm:w-full w-[48%]">
+              <p className="flex text-gray-800 items-center gap-2 text-md font-semibold">
                 <StarIcon />
                 {strength.title}
               </p>
-              <p>{strength.content}</p>
+              <p className="text-xs">{strength.content}</p>
             </div>
           );
         })}

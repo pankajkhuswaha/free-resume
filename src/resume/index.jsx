@@ -23,7 +23,7 @@ const Resume = () => {
   return (
     <div key={selectedResume}>
       <DragDropContext onDragEnd={onDragEnd}>
-        <div className="p-4">
+        <div className="p-8">
           <Droppable droppableId="resume">
             {(provided) => (
               <div {...provided.droppableProps} ref={provided.innerRef}>

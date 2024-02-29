@@ -17,26 +17,26 @@ const Projects = () => {
             <div className="flex justify-between items-center">
               <a
                 href={link}
-                target="_blank"
-                className="text-lg font-semibold flex gap-2 cursor-pointer items-center"
+                target="blank"
+                className="text-md font-semibold flex gap-2 cursor-pointer items-center"
               >
                 {title} <ExternalLink size={20} />
               </a>
-              <p>
+              <p className="text-xs">
                 {startDate} - {endDate}
               </p>
             </div>
             {description.map((desc, i) => (
-              <li className="text-sm" key={i}>
+              <li className="text-[14px] ml-2" key={i}>
                 {desc}
               </li>
             ))}
             <p>{project.technologies}</p>
-            <p>
+            <p className="mt-1">
               <span className="text-md font-bold">Tech stack :</span>
               <span className="text-black ml-2">{techStack.join(" , ")}</span>
             </p>
-            {projects.length !== index + 1 && <Divider />}
+            {/* {projects.length !== index + 1 && <Divider />} */}
           </div>
         );
       })}
