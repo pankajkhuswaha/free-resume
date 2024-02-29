@@ -8,7 +8,7 @@ import Summary from "./Summary";
 
 const resume3 = {
   name: "ATS Friendly",
-  image: "/resumes/2.png",
+  image: "/resumes/3.png",
   template: [
     { id: "info", component: <Info /> },
     // { id: "contact", component: <Contact /> },
