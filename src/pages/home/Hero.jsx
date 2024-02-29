@@ -8,7 +8,7 @@ const Hero = () => {
           <p className="text-gray-500 bg-sky-100 w-fit px-3 py-1 rounded">
             THE BEST RESUME BUILDER ONLINE
           </p>
-          <h1 className="md:text-5xl text-gray-800 capitalize">
+          <h1 className="text-3xl md:text-5xl text-gray-800 capitalize">
             Create a Professional resume{" "}
             <span className="text-sky-600">in Minutes</span>
           </h1>

@@ -5,6 +5,8 @@ import SectionWrapper from "./Sections";
 
 const Experience = () => {
   const { experiences } = useExperiences();
+  if (experiences && experiences?.length === 0) return;
+
   return (
     <SectionWrapper title={"Experience"}>
       {experiences.map((experience, i) => {

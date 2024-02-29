@@ -1,14 +1,13 @@
-import React from "react";
 import resumeTemplates from "../../templates";
 import resumeStore from "../../features/resumeStore";
-import resumeThemeStore from "../../features/themeStore";
+// import resumeThemeStore from "../../features/themeStore";
 
 const Theme = () => {
   const { selectResume, selectedResume } = resumeStore();
-  const { setPrimaryColor, primaryColor } = resumeThemeStore();
+  // const { setPrimaryColor, primaryColor } = resumeThemeStore();
   return (
     <div className="rounded-2xl shadow p-3 mt-2">
-      <div className="flex flex-wrap w-full border justify-between p-3 rounded-2xl items-center shadow-lg mb-4">
+      {/* <div className="flex flex-wrap w-full border justify-between p-3 rounded-2xl items-center shadow-lg mb-4">
         <h1 className="text-2xl text-primary">Change Resume Color</h1>
         <div
           className={`border-2  w-1/2 rounded-md h-10 flex items-center overflow-hidden`}
@@ -28,7 +27,7 @@ const Theme = () => {
             name="mainbg"
           />
         </div>
-      </div>
+      </div> */}
       <h1 className="text-2xl text-primary px-3">Change Resume Template</h1>
       <div className="flex gap-4 mt-4 px-3">
         {resumeTemplates.map((template, i) => {

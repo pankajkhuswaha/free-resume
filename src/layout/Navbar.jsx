@@ -16,7 +16,7 @@ const Navbar = () => {
     <div className="border-b shadow-md bg-white z-50 w-full sticky top-0">
       <div className="container mx-auto p-3 flex justify-between items-center">
         <Link to={"/"} className="text-lg md:text-2xl font-bold text-primary">
-          <img src="/logo.png" alt="logo" className="w-36" />
+          <img src="/logo.png" alt="logo" className="w-16 md:w-36" />
         </Link>
         {id && (
           <>

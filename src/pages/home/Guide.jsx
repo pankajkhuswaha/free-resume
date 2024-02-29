@@ -43,7 +43,7 @@ const Guide = () => {
       <p className="text-gray-500 bg-sky-100 w-fit mx-auto px-3 py-1 rounded mb-2">
         LEVEL UP YOUR JOB HUNT
       </p>
-      <h1 className="text-sky-600">
+      <h1 className="text-sky-600 text-2xl md:4xl">
         Build an resume that gets more job offers
       </h1>
       <p className="max-w-prose max-sm:text-justify text-gray-500 md:text-lg mx-auto my-4">

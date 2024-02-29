@@ -1,8 +1,7 @@
-import { Trash2, TrashIcon } from "lucide-react";
-import FormLayout from "../../components/FormLayout";
-import skillStore from "../../features/skillsStore";
 import { useForm } from "react-hook-form";
+import FormLayout from "../../components/FormLayout";
 import Skills from "../../components/sections/Skills";
+import skillStore from "../../features/skillsStore";
 
 const AddSkills = () => {
   const { addSkill } = skillStore();
@@ -30,6 +29,7 @@ const AddSkills = () => {
               placeholder="Skill Name"
               {...register("name")}
             />
+
             <select {...register("level")} className="form-input w-full">
               <option selected disabled>
                 Select skill level
@@ -37,6 +37,19 @@ const AddSkills = () => {
               <option>Beginner</option>
               <option>Intermediate</option>
               <option>Advanced</option>
+            </select>
+
+            <select {...register("type")} className="form-input w-full">
+              <option selected disabled>
+                Select skill type
+              </option>
+              <option>Soft Skill</option>
+              <option>Technical Skill</option>
+              <option>Frontend</option>
+              <option>Backend</option>
+              <option>Database</option>
+              <option>General</option>
+              <option>Programming Language</option>
             </select>
 
             <button className="btn">Add Skill</button>
