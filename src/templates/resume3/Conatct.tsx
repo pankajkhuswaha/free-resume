@@ -9,7 +9,7 @@ const Contact = () => {
       {Object.entries(contactDetails).map(([key, value]) => {
         if (value) {
           return (
-            <a key={key} href={value.link} className="flex items-center gap-2 ">
+            <a key={key} href={value.link} target="_blank" className="flex items-center gap-2 ">
               <span className="">{value.icon}</span>
               <span className="icon-txt text-xs -mb-1">{value.label}</span>
             </a>

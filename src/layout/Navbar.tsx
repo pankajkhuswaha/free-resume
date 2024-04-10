@@ -3,11 +3,14 @@ import { useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import ResumeToPrint from "../resume/ResumeToPrint";
+import infoStore from "../features/infoStore";
 
 const Navbar = () => {
-  const componentRef = useRef<HTMLDivElement|null>(null);
+  const componentRef = useRef<HTMLDivElement | null>(null);
+  const { info } = infoStore();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
+    documentTitle: `${info.name} Resume`,
   });
   const showDownloadButton = useLocation().pathname.includes("app");
   const id = localStorage.getItem("selectedResume");
