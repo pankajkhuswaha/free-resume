@@ -9,14 +9,10 @@ const Contact = () => {
       {Object.entries(contactDetails).map(([key, value]) => {
         if (value) {
           return (
-            <p
-              key={key}
-              onClick={() => window.open(value.link)}
-              className="flex items-center gap-2 "
-            >
+            <a key={key} href={value.link} className="flex items-center gap-2 ">
               <span className="">{value.icon}</span>
               <span className="icon-txt text-xs -mb-1">{value.label}</span>
-            </p>
+            </a>
           );
         }
       })}
