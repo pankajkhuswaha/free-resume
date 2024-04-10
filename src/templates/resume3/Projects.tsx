@@ -4,7 +4,7 @@ import projectStore from "../../features/projectStore";
 
 const Projects = () => {
   const { projects } = projectStore();
-    if (projects && projects?.length === 0) return;
+  if (projects && projects?.length === 0) return;
 
   return (
     <SectionWrapper title={"Projects"}>
@@ -25,11 +25,13 @@ const Projects = () => {
                 {startDate} - {endDate}
               </p>
             </div>
-            {description.map((desc, i) => (
-              <li className="text-[13px] ml-2" key={i}>
-                {desc}
-              </li>
-            ))}
+            <ul>
+              {description.map((desc, i) => (
+                <li className="text-[13px]" key={i}>
+                  {desc}
+                </li>
+              ))}
+            </ul>
             <p className="mt-1">
               <span className="text-md font-bold">Tech stack :</span>
               <span className="text-black ml-2">{techStack.join(" , ")}</span>

@@ -23,11 +23,13 @@ const Projects = () => {
             <p>
               {startDate} - {endDate}
             </p>
-            {description.map((desc, i) => (
-              <li className="text-[13px]" key={i}>
-                {desc}
-              </li>
-            ))}
+            <ul>
+              {description.map((desc, i) => (
+                <li className="text-[13px]" key={i}>
+                  {desc}
+                </li>
+              ))}
+            </ul>
             <p>
               <span className="text-md font-bold">Tech stack :</span>
               <span className="text-black ml-2">{techStack.join(" , ")}</span>
