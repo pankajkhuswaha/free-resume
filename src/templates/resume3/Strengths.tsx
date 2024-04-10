@@ -1,4 +1,3 @@
-import { StarIcon } from "lucide-react";
 import strengthStore from "../../features/strengthsStore";
 import SectionWrapper from "./SectionWrapper";
 
@@ -7,12 +6,11 @@ const Strengths = () => {
   if (strengths && strengths?.length === 0) return;
   return (
     <SectionWrapper title={"Strengths"}>
-      <div className="flex flex-wrap gap-4 justify-between mt-2">
+      <div className="grid grid-cols-2 gap-4">
         {strengths.map((strength, i) => {
           return (
-            <div key={i} className="max-sm:w-full w-[48%]">
+            <div key={i} className="">
               <p className="flex text-gray-800 items-center gap-2 text-md font-semibold">
-                <StarIcon />
                 {strength.title}
               </p>
               <p className="text-xs">{strength.content}</p>
