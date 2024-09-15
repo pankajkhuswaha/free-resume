@@ -15,6 +15,7 @@ const AddExperience = () => {
     handleSubmit,
     setValue,
     reset,
+    getValues,
     formState: { errors },
   } = useForm<ExperienceProp>({ resolver: zodResolver(experienceSchema) });
   const textInputs = [
@@ -93,13 +94,16 @@ const AddExperience = () => {
           <div className="md:flex md:gap-4 max-md:space-y-4">
             <MonthYearInput
               className="w-full md:w-1/2"
+              defaultValue={getValues("startDate")}
               label={"Select Joining date in company"}
               error={errors?.startDate?.message}
               onChange={(date) => setValue("startDate", date)}
             />
             <MonthYearInput
+              showPresent
               className="w-full md:w-1/2"
               label={"Select Leaving date in company"}
+              defaultValue={getValues("endDate")}
               error={errors?.endDate?.message}
               onChange={(date) => setValue("endDate", date)}
             />

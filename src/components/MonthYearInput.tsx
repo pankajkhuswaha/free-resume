@@ -4,38 +4,62 @@ import { months } from "../constants";
 type MonthInputProp = {
   className?: string;
   label: string;
+  defaultValue?: string;
+  showPresent?: boolean;
   onChange?: (value: string) => void;
   error?: string;
 };
 
-const MonthYearInput = ({
-  className,
-  label,
-  onChange,
-  error,
-}: MonthInputProp) => {
+const MonthYearInput = (prop: MonthInputProp) => {
+  const { className, label, onChange, error, defaultValue, showPresent } = prop;
+  console.log(defaultValue);
   const date = new Date();
-  const presentMonth = date.getMonth();
+  const presentMonth =
+    months.indexOf(defaultValue?.split(" ")[0] || "January") || date.getMonth();
   const presentYear = date.getFullYear();
   const [month, setMonth] = useState(months[presentMonth]);
-  const [year, setYear] = useState(presentYear);
+  const [year, setYear] = useState(defaultValue?.split(" ")[1] || presentYear);
   const [value, setValue] = useState(`${month}-${year}`);
+  const [isPresent, setIsPresent] = useState(false);
 
   useEffect(() => {
     onChange && onChange(value);
   }, [onChange, value]);
 
   useEffect(() => {
-    setValue(`${month} ${year}`);
+    if (isPresent) {
+      setValue("Present");
+    } else {
+      setValue(`${month} ${year}`);
+    }
     onChange && onChange(value);
-  }, [month, onChange, value, year]);
+  }, [month, onChange, value, year, isPresent]);
 
   return (
     <div className={`space-y-2 ${className}`}>
-      <label className="text-gray-500">{label}</label>
+      <div className="flex justify-between items-center">
+        <label className="text-gray-500">{label}</label>{" "}
+        {showPresent && (
+          <div className="persent flex gap-4 items-center">
+            <div className="checkbox">
+              <input
+                checked={isPresent}
+                onChange={() => setIsPresent(!isPresent)}
+                id="cbx"
+                type="checkbox"
+              />
+              <label className="toggle" htmlFor="cbx">
+                <span></span>
+              </label>
+            </div>
+            Present
+          </div>
+        )}
+      </div>
       <div className="flex gap-2">
         <select
           value={month}
+          disabled={isPresent}
           onChange={(e) => setMonth(e.target.value)}
           className={`form-input w-1/2 ${error && "error"}`}
         >
@@ -47,6 +71,7 @@ const MonthYearInput = ({
         <select
           className={`form-input w-1/2 ${error && "error"}`}
           value={year}
+          disabled={isPresent}
           onChange={(e) => setYear(+e.target.value)}
         >
           <option disabled>Select Year</option>
