@@ -12,7 +12,6 @@ type MonthInputProp = {
 
 const MonthYearInput = (prop: MonthInputProp) => {
   const { className, label, onChange, error, defaultValue, showPresent } = prop;
-  console.log(defaultValue);
   const date = new Date();
   const presentMonth =
     months.indexOf(defaultValue?.split(" ")[0] || "January") || date.getMonth();
@@ -20,7 +19,9 @@ const MonthYearInput = (prop: MonthInputProp) => {
   const [month, setMonth] = useState(months[presentMonth]);
   const [year, setYear] = useState(defaultValue?.split(" ")[1] || presentYear);
   const [value, setValue] = useState(`${month}-${year}`);
-  const [isPresent, setIsPresent] = useState(false);
+  const [isPresent, setIsPresent] = useState(
+    defaultValue == "Present" ? true : false
+  );
 
   useEffect(() => {
     onChange && onChange(value);

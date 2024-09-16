@@ -16,6 +16,7 @@ const AddExperience = () => {
     setValue,
     reset,
     getValues,
+    setError,
     formState: { errors },
   } = useForm<ExperienceProp>({ resolver: zodResolver(experienceSchema) });
   const textInputs = [
@@ -38,6 +39,7 @@ const AddExperience = () => {
     experiences.length === 0 ? true : false
   );
   const [selectedDescription, setSelectedDescription] = useState("");
+  console.log(errors);
 
   return (
     <FormLayout
@@ -47,6 +49,15 @@ const AddExperience = () => {
       length={experiences.length}
       open={showForm}
       onSubmit={handleSubmit((data) => {
+        const startDate = new Date(data.startDate);
+        const endDate =
+          data.endDate == "Present" ? new Date() : new Date(data.endDate);
+        if (startDate > endDate) {
+          setError("startDate", {
+            message: "Joining date should not greater than leaving date",
+          });
+          return;
+        }
         selectedDescription !== "" ? editExperience(data) : addExperience(data);
         reset();
         setShowForm(false);
@@ -112,7 +123,7 @@ const AddExperience = () => {
             <textarea
               rows={5}
               className={`form-input w-full ${
-                errors["description"]?.message && "error"
+                errors["description"] && "error"
               }`}
               placeholder="Enter your job description"
               defaultValue={selectedDescription}
@@ -121,7 +132,7 @@ const AddExperience = () => {
               }
             ></textarea>
             <p className="text-red-500 mt-0">
-              {errors["description"]?.message}
+              {errors["description"] && errors["description"][0]?.message}
             </p>
             <p>
               Note :{" "}

@@ -9,12 +9,23 @@ interface ExperienceStore {
   editExperience: (experince: ExperienceProp) => void;
 }
 
+function sortJobsByStartDate(jobs: ExperienceProp[]) {
+  return jobs.sort((a, b) => {
+    // Convert startDate strings to Date objects
+    const dateA = new Date(a.startDate);
+    const dateB = new Date(b.startDate);
+
+    // Sort in descending order (latest dates first)
+    return dateB.getTime() - dateA.getTime();
+  });
+}
+
 const useExperiences = create<ExperienceStore>((set) => ({
   experiences: fetchData("experiences") || resumeDetails.experiences,
   addExperience: (experience) => {
     set((state) => {
       const newExperiences = [...state.experiences, experience];
-      saveData("experiences", newExperiences);
+      saveData("experiences", sortJobsByStartDate(newExperiences));
       return { experiences: newExperiences };
     });
   },
@@ -23,7 +34,7 @@ const useExperiences = create<ExperienceStore>((set) => ({
     set((state) => {
       const newExperiences = [...state.experiences];
       newExperiences.splice(index, 1);
-      saveData("experiences", newExperiences);
+      saveData("experiences", sortJobsByStartDate(newExperiences));
       return { experiences: newExperiences };
     }),
 
@@ -32,7 +43,7 @@ const useExperiences = create<ExperienceStore>((set) => ({
       const newExperiences = state.experiences.map((pro) =>
         pro.company === experience.company ? experience : pro
       );
-      saveData("experiences", newExperiences);
+      saveData("experiences", sortJobsByStartDate(newExperiences));
       return { experiences: newExperiences };
     }),
 }));
