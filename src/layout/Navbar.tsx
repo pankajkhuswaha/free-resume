@@ -8,6 +8,7 @@ import infoStore from "../features/infoStore";
 const Navbar = () => {
   const componentRef = useRef<HTMLDivElement | null>(null);
   const { info } = infoStore();
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
     documentTitle: `${info.name} Resume`,
@@ -17,7 +18,7 @@ const Navbar = () => {
 
   return (
     <div className="border-b shadow-md bg-white z-50 w-full sticky top-0">
-      <div className="container mx-auto p-3 flex justify-between items-center">
+      <div className="mx-auto p-3 flex justify-between items-center">
         <Link to={"/"} className="text-lg md:text-2xl font-bold text-primary">
           <img src="/logo.png" alt="logo" className="w-16 md:w-36" />
         </Link>

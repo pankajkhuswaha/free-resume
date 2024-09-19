@@ -6,7 +6,7 @@
 
 :root {
   --primary-color: #0081cf;
-  --primary-100:#0081cf10
+  --primary-100: #0081cf10;
 }
 
 * {
@@ -56,7 +56,7 @@ ul {
 .form-input.error {
   @apply border-red-500;
 }
-.form-input:disabled{
+.form-input:disabled {
   @apply bg-gray-300 border-gray-300 cursor-not-allowed;
 }
 .arrow-up {
@@ -132,4 +132,22 @@ ul {
   transform: scale(1);
   opacity: 0;
   transition: all 0.4s ease;
+}
+
+/* print-styles.css */
+@media print {
+  @page {
+    margin: 0.5cm;
+  }
+
+  .resume-section {
+    page-break-inside: avoid;
+  }
+
+  @page {
+    @top-left {
+      content: "";
+      height: 0.1cm; /* Adjust this value to set your desired top margin */
+    }
+  }
 }

@@ -27,28 +27,30 @@ const Resume = () => {
   return (
     <div key={JSON.stringify(selectedResume)}>
       <DragDropContext onDragEnd={onDragEnd}>
-        <div className="p-8">
-          <Droppable droppableId="resume">
-            {(provided) => (
-              <div {...provided.droppableProps} ref={provided.innerRef}>
-                {resumeFormat.map(({ id, component }, index) => (
-                  <Draggable key={id} draggableId={id} index={index}>
-                    {(provided) => (
-                      <div
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
-                        className="border-2 px-2 rounded cursor-grab border-transparent"
-                      >
-                        {component}
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
+        <div className="p-4">
+          <div id="resume-to-print" className="p-4">
+            <Droppable droppableId="resume">
+              {(provided) => (
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {resumeFormat.map(({ id, component }, index) => (
+                    <Draggable key={id} draggableId={id} index={index}>
+                      {(provided) => (
+                        <div
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          ref={provided.innerRef}
+                          className="border-2 px-2 rounded cursor-grab border-transparent"
+                        >
+                          {component}
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </div>
         </div>
       </DragDropContext>
     </div>
