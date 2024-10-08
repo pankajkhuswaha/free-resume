@@ -25,7 +25,7 @@ const Projects = () => {
             </p>
             <ul>
               {description.map((desc, i) => (
-                <li className="text-[13px]" key={i}>
+                <li className="text-[12px]" key={i}>
                   {desc}
                 </li>
               ))}
